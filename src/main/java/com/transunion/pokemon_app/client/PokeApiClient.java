@@ -2,11 +2,12 @@ package com.transunion.pokemon_app.client;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.transunion.pokemon_app.dto.PokemonDTO;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class PokeApiClient {
     public PokeApiClient(RestTemplate restTemplate) {
         this.restTemplate=restTemplate;
