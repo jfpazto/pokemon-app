@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://miempresa.com/pokemonapp/soap"
-           xmlns="http://miempresa.com/pokemonapp/soap"
+           targetNamespace="http://transunion.com/pokemonapp/soap"
+           xmlns="http://transunion.com/pokemonapp/soap"
            elementFormDefault="qualified">
 
     <xs:element name="BuscarPokemonesRequest">
@@ -24,11 +25,12 @@
     <xs:complexType name="Pokemon">
         <xs:sequence>
             <xs:element name="idPokeapi" type="xs:int"/>
-            <xs:element name="name" type="xs:string"/>
-            <xs:element name="height" type="xs:int"/>
-            <xs:element name="weight" type="xs:int"/>
-            <xs:element name="types" type="xs:string" maxOccurs="unbounded"/>
-            <xs:element name="abilities" type="xs:string" maxOccurs="unbounded"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="altura" type="xs:int"/>
+            <xs:element name="peso" type="xs:int"/>
+            <xs:element name="tipos" type="xs:string" maxOccurs="unbounded"/>
+            <xs:element name="habilidades" type="xs:string" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
+
 </xs:schema>

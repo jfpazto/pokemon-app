@@ -15,7 +15,7 @@ import java.util.List;
 
 @Endpoint
 public class PokemonSoapEndpoint {
-    private static final String NAMESPACE_URI="http://prueba-api.com/pokemon/soap";
+    private static final String NAMESPACE_URI="http://transunion.com/pokemonapp/soap";
     private final PokemonService pokemonService;
     public PokemonSoapEndpoint(PokemonService pokemonService){
         this.pokemonService=pokemonService;
