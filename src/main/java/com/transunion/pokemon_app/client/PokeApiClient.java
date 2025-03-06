@@ -8,7 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PokeApiClient {
-    private final RestTemplate restTemplate = new RestTemplate();
+    public PokeApiClient(RestTemplate restTemplate) {
+        this.restTemplate=restTemplate;
+    }
+
+    private final RestTemplate restTemplate;
     private static final String BASE_URL= "https://pokeapi.co/api/v2/pokemon/";
     public PokemonDTO obtenerPokemonDesdeApi(int idPokeapi){
         String url= BASE_URL + idPokeapi;
