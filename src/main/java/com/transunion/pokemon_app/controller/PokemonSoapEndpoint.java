@@ -20,7 +20,7 @@ public class PokemonSoapEndpoint {
     public PokemonSoapEndpoint(PokemonService pokemonService){
         this.pokemonService=pokemonService;
     }
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "BuscarPokemonesRequest")
+    @PayloadRoot(namespace = "http://transunion.com/pokemonapp/soap", localPart = "BuscarPokemonesRequest")
     @ResponsePayload
     public BuscarPokemonesResponse buscarPokemones(@RequestPayload BuscarPokemonesRequest request) {
         PokemonFilterDTO filter = new PokemonFilterDTO(
@@ -30,9 +30,9 @@ public class PokemonSoapEndpoint {
         );
 
         List<PokemonDTO> resultado = pokemonService.buscarPokemones(filter);
-        List<Pokemon> pokemonesSoap = PokemonMapper.toSoapPokemonList(resultado);
-        BuscarPokemonesResponse response = new BuscarPokemonesResponse();
-        response.setPokemones(pokemonesSoap);
+
+        BuscarPokemonesResponse response = PokemonMapper.toSoapResponse(resultado);
+
         return response;
     }
 }
