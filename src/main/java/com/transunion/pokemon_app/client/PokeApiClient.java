@@ -37,4 +37,21 @@ public class PokeApiClient {
 
         return pokemon;
     }
+    public List<Integer> obtenerTodosLosIds() {
+        String url = "https://pokeapi.co/api/v2/pokemon?limit=150&offset=0";
+        JsonNode response = restTemplate.getForObject(url, JsonNode.class);
+        List<Integer> ids = new ArrayList<>();
+
+        response.get("results").forEach(node -> {
+            String pokemonUrl = node.get("url").asText();
+            int id = extraerIdDesdeUrl(pokemonUrl);
+            ids.add(id);
+        });
+
+        return ids;
+    }
+    private int extraerIdDesdeUrl(String url) {
+        String[] partes = url.split("/");
+        return Integer.parseInt(partes[partes.length - 1]);
+    }
 }

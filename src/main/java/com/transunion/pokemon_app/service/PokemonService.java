@@ -26,4 +26,11 @@ public class PokemonService {
     public List<PokemonDTO> buscarPokemones (PokemonFilterDTO filtro){
         return pokemonRepository.buscarPokemones(filtro);
     }
+    public void sincronizarTodosLosPokemones() {
+        List<Integer> ids = pokeApiClient.obtenerTodosLosIds();
+        for (int id : ids) {
+            PokemonDTO pokemon = pokeApiClient.obtenerPokemonDesdeApi(id);
+            pokemonRepository.cargarPokemon(pokemon);
+        }
+    }
 }

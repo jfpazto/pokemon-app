@@ -25,4 +25,8 @@ public class PokemonController {
         PokemonFilterDTO filtro=new PokemonFilterDTO(nombre,tipo,habilidad);
         return pokemonService.buscarPokemones(filtro);
     }
+    @PostMapping("/sincronizar/todos")
+    public void sincronizarTodos() {
+        pokemonService.sincronizarTodosLosPokemones();
+    }
 }

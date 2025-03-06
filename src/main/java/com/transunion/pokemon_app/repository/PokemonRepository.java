@@ -19,9 +19,14 @@ public class PokemonRepository {
 
     public void cargarPokemon(PokemonDTO pokemon){
         String sql = "CALL cargar_pokemon(?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, pokemon.getIdPokeapi(),pokemon.getName(),pokemon.getHeight(),pokemon.getWeight(),pokemon.getTypes(),pokemon.getAbilities());
+        jdbcTemplate.update(sql, pokemon.getIdPokeapi(),pokemon.getName(),pokemon.getHeight(),pokemon.getWeight(),convertirArrayACsv(pokemon.getTypes()),convertirArrayACsv(pokemon.getAbilities()));
     }
-
+    private String convertirArrayACsv(String[] array) {
+        if (array == null || array.length == 0) {
+            return "";
+        }
+        return String.join(",", array);
+    }
     public List<PokemonDTO> buscarPokemones(PokemonFilterDTO filter){
         String sql = "SELECT * FROM buscar_pokemones(?,?,?)";
         return jdbcTemplate.query(sql,
